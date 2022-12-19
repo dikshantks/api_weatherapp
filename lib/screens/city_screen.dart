@@ -62,7 +62,9 @@ class _CityScreenState extends State<CityScreen> {
                 ),
               ),
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pop(context, cityName);
+                },
                 child: const Text(
                   'Get Weather',
                   style: kButtonTextStyle,

@@ -78,8 +78,8 @@ class _LocationScreenState extends State<LocationScreen> {
                     ),
                   ),
                   IconButton(
-                    onPressed: () {
-                      Navigator.push(
+                    onPressed: () async {
+                      var typedcity = await Navigator.push(
                         context,
                         MaterialPageRoute(
                           builder: ((context) {
@@ -87,6 +87,14 @@ class _LocationScreenState extends State<LocationScreen> {
                           }),
                         ),
                       );
+                      print(typedcity);
+
+                      if (typedcity != null) {
+                        var weatherdata =
+                            await weatherModel.getCityWeather(typedcity);
+
+                        updateUI(weatherdata);
+                      }
                     },
                     icon: const Icon(
                       Icons.location_city,
